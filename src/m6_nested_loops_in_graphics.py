@@ -141,10 +141,20 @@ def draw_wall_on_right(rectangle, n, window):
     and n is a small, positive integer.
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
-
+    corner_1 = rectangle.corner_1
+    corner_2 = rectangle.corner_2
+    length = (rectangle.corner_1.x - rectangle.corner_2.x)
+    height = (rectangle.corner_1.y - rectangle.corner_2.y)
+    for k in range(n + 1):
+        for j in range(k):
+            pt1 = rg.Point(corner_1.x + length * j, corner_1.y - height * k)
+            pt2 = rg.Point(corner_2.x + length * j, corner_2.y - height * k)
+            nr = rg.Rectangle(pt1, pt2)
+            nr.attach_to(window)
+    window.render(0.5)
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
